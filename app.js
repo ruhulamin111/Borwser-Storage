@@ -1,11 +1,12 @@
 const addItem = () => {
     const input = document.getElementById('input');
     const name = input.value;
+
+    // add to ui 
     displayProduct(name);
 
-    // add cart 
-
-    // add storage 
+    // add to local storage
+    addToCart(name);
 
     input.value = '';
 }
@@ -27,5 +28,12 @@ const getCart = () => {
         cartObject = {};
     }
     return cartObject;
+};
+
+const addToCart = (name) => {
+    const cart = getCart();
+    cart[name] = 1;
+    const cartStringified = JSON.stringify(cart);
+    localStorage.setItem('cart', cartStringified);
 };
 
