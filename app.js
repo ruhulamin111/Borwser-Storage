@@ -37,3 +37,10 @@ const addToCart = (name) => {
     localStorage.setItem('cart', cartStringified);
 };
 
+const loadFromStorage = () => {
+    const cart = getCart();
+    for (const item in cart) {
+        displayProduct(item);
+    }
+}
+loadFromStorage();
